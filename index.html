@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome | Calculation Nation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		body
+		{
+			background-color: #48a8f2;
+		}
+		input.name
+		{
+			margin-right: 1px;
+		}
+		fieldset
+		{
+			border-radius: 5px;
+			width: 90%;
+			margin: 0 auto;
+		}
+
+		span.red
+		{
+			color: red;
+		}
+		img
+		{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		p
+		{
+			font-family: Arial, Helvetica, sans-serif; 
+			font-size: 15px;
+			text-align: center;
+			letter-spacing: 1px;
+		}
+	</style>
+</head>
+<body>
+	<div id="page">
+	<table align="center">
+		<tr>
+		<td colspan= "7"> <img src= "learn.png" width="75%" height="75%">
+		</tr>
+
+		<tr align="center">
+			<td colspan= "7"><i><span class="og">"The only way </span><span class="bl">to learn mathematics </span><span class="og">is to do mathematics"</span></i><br>
+
+				<h2 id="title">Welcome to Calculation Nation</h2>
+				<p align="center">We're thrilled that you are interested in our exciting program tailored just for you and all our participants, ages 9-12.<br/>
+
+				Our services provides children with the opportunity to connect with technology and interact with our <strong>must learn programs</strong><br/> which are implemented using a level-based system, where the problems increase in difficulty as the user progresses<br/> through each problem set and level.
+
+				Children are allowed to progress to the next level as long as they have achieved<br/>  a pass rategreater than or equal to 80%. <br/><br/> - signed: <i>Team Calculation Nation</i></p>	
+			</td>
+		</tr>
+	</table>
+	
+	<fieldset>
+		<legend><h2>Sign up below:</h2></legend>
+		<form action="math.html">
+			<label for="firstname">First Name <span class="red">*</span></label>
+			<input type="text" class="name" id="firstname" name="" minlength="3" required>
+			<label for="middlename">Middle Name <span class="red">*</span></label>
+			<input type="text" class="name" id="middlename" name="" required>
+			<label for="lastname">Last Name <span class="red">*</span></label>
+			<input type="text" class="name" id="lastname" name="" minlength="3" required>
+			<br/><br/>
+			<label for="dob">Date of Birth <span class="red">*</span></label>
+			<input type="date" id="dob" name="" onblur="calculateAge()" required>
+			<br/><br/>
+			<label for="age">Age <span class="red">*</span></label>
+			<input type="number" name="" id="age" required>
+			<br/><br/>
+			<label>Gender <span class="red">*</span></label>
+			<br/>
+			<input type="radio" name="gender" id="female" value="Female" onchange="sex()" required>
+			<label>Female</label>
+			<br/>
+			<input type="radio" name="gender" id="male" value="Male" onchange="sex()" required>
+			<label>Male</label>
+			<br/><br/>
+			<label for="self">Self Image <span class="red">*</span></label>
+			<br />
+			<input size="75" id="self" type="file" name="" required>
+			<br/><br/>
+			<input id="submit" type="submit" value="Enroll" onclick="saveData()" />
+		</form>
+	</fieldset>
+	<br/>
+	</div>
+	<script type="text/javascript">
+		function calculateAge()
+		{ 
+           	var date = new Date(document.getElementById("dob").value);
+            var today = new Date();
+
+            currYear = today.getFullYear();
+            yourYear = date.getFullYear();
+            var Age = currYear - yourYear;
+            if (Age > 9 && Age <=12)
+            {
+	  			document.getElementById("age").value = Age;
+	  			alert("You are " + Age + " years old!");
+	  			document.getElementById("age").disabled = true;
+	  			document.getElementById("submit").disabled = false;
+  			}
+  			else
+  			{
+  				alert("Invalid Age! This website caters for children ages 9-12!");
+  				document.getElementById("age").disabled = true;
+  				document.getElementById("submit").disabled = true;
+  			}
+  		}
+  		function sex()
+  		{
+  			var gen1, gen2;
+  			gen1 = document.getElementById("male");
+  			gen2 = document.getElementById("female");
+  			if (gen1.checked == true)
+  			{
+				sessionStorage.setItem("gender", gen1.value);
+  			}
+  			if (gen2.checked == true)
+  			{
+				sessionStorage.setItem("gender", gen2.value);  			
+			}
+  		}
+		function saveData()
+		{
+			var firstname = document.getElementById("firstname");
+			var	lastname = document.getElementById("lastname");
+			var middlename = document.getElementById("middlename");
+			var dob = document.getElementById("dob");
+			var age = document.getElementById("age");
+			sessionStorage.setItem("firstname",firstname.value);
+			sessionStorage.setItem("lastname",lastname.value);
+			sessionStorage.setItem("middlename", middlename.value);
+			sessionStorage.setItem("dob",dob.value);
+			sessionStorage.setItem("age", age.value);
+		}
+	</script>
+</body>
+</html>

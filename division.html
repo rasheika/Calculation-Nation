@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Division | Calculation Nation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1 id="title"><a href="math.html" class="home">HOME</a>DIVISION</h1>
+	<div class="parent">
+		<div class="left">
+			<div id="menu">
+				<i><span class="og">"The only way </span><span class="bl">to learn mathematics </span><span class="og">is to do mathematics"</span></i>
+				<h2 id="heading2">Categories:</h2>
+				<a href="addition.html" class="orange">Addition</a>
+				<br/><br/><br/>
+				<a href="subtraction.html" class="blue" >Subtraction</a>
+				<br/><br/><br/>
+				<a href="multiplication.html" class="pink">Multiplication</a>
+				<br/><br/><br/>
+				<a href="division.html" class="green" id="current">Division</a>
+				<br/><br/>
+			</div>
+		</div>
+		<div class="right">
+			<img id="math1" src="divide2.png" width="30%" height="250px">
+			<button onclick="getQuestion()" id="test" class="green"><span>Ready!</span></button>
+			<div class="quiz">
+				<p><h1 id="heading"></h1></p>
+				<p><h2 id="user"></h2></p>
+				<p><h2 id="question"></h2></p>
+				<input type="number" id="answer" reuqired disabled>
+				<button id="submit" onclick="testAnswer()" disabled>Submit</button>
+				<p><h3 id="message"></h3></p>
+				<p><h3 id="avgScore"></h3></p>
+				<p><h3 id="congrats"></h3></p>
+				<p id="redo"></p>
+			</div>
+		</div>	
+	</div>
+	<script type="text/javascript">
+		var quotient = [], i, correct=0, wrong = 0, cnt, overall=0, stage=0, levelstatus = [], test = [], incorrect = "", question = [], sameanswers = [];
+		var num1, num2, level;
+		i=1;
+		const TOTAL = 15;
+		function getQuestion() {
+			document.getElementById("test").disabled = true;
+			document.getElementById("submit").disabled = false;
+			document.getElementById("answer").disabled = false;
+			document.getElementById("user").innerHTML = "";
+			document.getElementById("redo").innerHTML = "";
+			document.getElementById("congrats").innerHTML = "";
+			document.getElementById("message").innerHTML = "";
+			document.getElementById("avgScore").innerHTML = "";
+			cnt = 1;
+			if(i < 16)
+			{
+				level1();
+			}
+			else
+			{
+				cnt=1;
+				if(i >= 16 && i <= 30 && test[1] >= 80)
+				{
+					level2();
+				}
+				else
+				{
+					cnt=1;
+					if(i > 30 && i <= 45 && test[2] >= 80)
+					{
+						level3();
+					}
+					else
+					{
+						cnt=1;
+						if(i > 45 && i <= 60 && test[3] >= 80)
+						{
+							level4();
+						}
+						else
+						{
+							cnt=1;
+							if(i > 60 && i <= 76 && test[4] >= 80)
+							{
+								level5();
+								if (stage == 5)
+								{
+									document.getElementById("heading").innerHTML = "CONGRATULATIONS ON COMPLETING ALL 5 LEVELS!!! <br>";
+									report();
+								}
+							}
+						}
+					}
+				}
+			}	
+		}
+
+		function testAnswer() {
+			var yourAns, result, score;
+			yourAns = document.getElementById("answer").value;
+			document.getElementById("submit").disabled = true;
+			if (yourAns == quotient[i-1]) 
+			{
+				correct++;
+				result = "<span class='highlight'>That is correct!</span> <button id='submit' onclick='getQuestion()'>Next!</button>";
+			}
+			else 
+			{
+				if (yourAns == '')
+				{
+					result = "<span class='highlight2'>Answer cannot be empty!</span>";
+					document.getElementById("submit").disabled = false;
+				}
+				else 
+				{
+					wrong++;
+					incorrect += question[i-1] + "Answer: " + quotient[i-1] + "<br><br>";
+					result = "<span class='highlight2'>That is incorrect!</span> <button id= 'submit' onclick='getQuestion()'>Next!</button>";
+				}
+			}
+			document.getElementById("message").innerHTML = result;
+			if (i == (( TOTAL * level)) + 1 )
+			{
+				score = correct + " out of " + TOTAL;
+				document.getElementById("avgScore").innerHTML = score;
+		        test[level] = (correct/TOTAL)*100;
+		        if (test[level] >= 80)
+		        {
+					overall = overall + (TOTAL - wrong);
+	           		stage++;
+		           	levelstatus[level] = ["<span class='highlight'>Pass</span> - " + test[level].toFixed(2) + "%"];
+		           	document.getElementById("avgScore").innerHTML += "<br> Excellent work! You have <span class= 'highlight'>passed</span> level " + level + "! Average:" + test[level] + "% <br> <span class= 'highlight'>Press Next</span>";
+		        }
+		        else
+		        {
+		           	levelstatus[level] = ["<span class='highlight2'>Fail</span> - " + test[level].toFixed(2) + "%"];
+		           	document.getElementById("avgScore").innerHTML += "<br>Looks like you have <span class='highlight2'>failed</span> level " + level + "! Keep trying! You can do this! Average: " + test[level] + "% <br> <span class= 'highlight'>Press Next</span>";
+		           	i = i - TOTAL;
+		        }
+			}
+			if (cnt == TOTAL) 
+			{
+				if (window.onbeforeunload = confirmExit() == false)
+				{
+					if (window.onbeforeunload = confirmReport() == true)
+					{
+						report2();
+					}
+				}
+				correct=0;
+				wrong = 0;
+			}
+			      	
+		}
+		function level1()
+		{
+			level=1;
+			document.getElementById("heading").innerHTML = "Level " + level;
+			document.getElementById("answer").value = '';
+			document.getElementById("message").innerHTML = '';
+			document.getElementById("avgScore").innerHTML = '';
+			num1= Math.floor((Math.random() * 9) + 1);
+	        num2= Math.floor((Math.random() * 9) + 1);
+	        if(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        {
+	        	while(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        	{	
+			        num1= Math.floor((Math.random() * 9) + 1);
+				    num2= Math.floor((Math.random() * 9) + 1);
+	        	}
+	        }
+	        if (quotient[i] == null)
+	        {
+	        	quotient[i] = num1/num2;
+	        }
+	        if(i == 15)
+	        {
+	           	document.getElementById("heading").innerHTML = "Level " + level + " - LAST QUESTION";
+	           	if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+	           	document.getElementById("question").innerHTML = question[i];
+	           	cnt = 15;
+	        }
+	        else
+	        {
+		        if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+		        document.getElementById("question").innerHTML = question[i];
+	        }
+	        i++;
+		}
+
+		function level2() 
+		{
+			level=2;
+			document.getElementById("heading").innerHTML = "Level " + level;
+			document.getElementById("answer").value = '';
+			document.getElementById("message").innerHTML = '';
+			document.getElementById("avgScore").innerHTML = '';
+			num2= Math.floor((Math.random() * 9) + 1);
+		    num1= Math.floor((Math.random() * 90) + 10);
+		    if(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        {
+	        	while(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        	{	
+			        num2= Math.floor((Math.random() * 9) + 1);
+				    num1= Math.floor((Math.random() * 90) + 10);
+	        	}
+	        }
+		    if (quotient[i] == null)
+	        {
+	        	quotient[i] = num1/num2;
+	        }
+		    if(i == 30)
+		    {
+		        document.getElementById("heading").innerHTML = "Level " + level + " - LAST QUESTION";
+		        if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+	            document.getElementById("question").innerHTML = question[i];
+	            cnt = 15;
+		    }
+		    else
+		    {	
+			    if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+			    document.getElementById("question").innerHTML = question[i];
+		    }
+		    i++;	
+		}
+
+		function level3()
+		{
+			level=3;
+			document.getElementById("heading").innerHTML = "Level " + level;
+			document.getElementById("answer").value = '';
+			document.getElementById("message").innerHTML = '';
+			document.getElementById("avgScore").innerHTML = '';
+			num1= Math.floor((Math.random() * 90) + 10);
+			num2= Math.floor((Math.random() * 90) + 10);
+			if(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        {
+	        	while(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        	{	
+			        num1= Math.floor((Math.random() * 90) + 10);
+				    num2= Math.floor((Math.random() * 90) + 10);
+	        	}
+	        }
+			if (quotient[i] == null)
+	        {
+	        	quotient[i] = num1/num2;
+	        }
+			if(i == 45)
+			{
+			    document.getElementById("heading").innerHTML = "Level " + level + " - LAST QUESTION";
+			    if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+		        document.getElementById("question").innerHTML = question[i];
+		        cnt = 15;
+			}
+			else
+			{	
+				if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+				document.getElementById("question").innerHTML = question[i];
+			}
+			i++;
+		}
+			
+		function level4()
+		{
+			level=4;
+			document.getElementById("heading").innerHTML = "Level " + level;
+			document.getElementById("answer").value = '';
+			document.getElementById("message").innerHTML = '';
+			document.getElementById("avgScore").innerHTML = '';
+			num2= Math.floor((Math.random() * 90) + 10);
+			num1= Math.floor((Math.random() * 900) + 100);
+			if(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        {
+	        	while(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        	{	
+			        num2= Math.floor((Math.random() * 90) + 10);
+				    num1= Math.floor((Math.random() * 900) + 100);
+	        	}
+	        }
+			if (quotient[i] == null)
+	        {
+	        	quotient[i] = num1/num2;
+	        }
+			if(i == 60)
+			{
+			    document.getElementById("heading").innerHTML = "Level " + level + " - LAST QUESTION";
+			    if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+			    document.getElementById("question").innerHTML = question[i];
+		        cnt = 15;
+			}
+			else
+			{	
+				if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+				document.getElementById("question").innerHTML = question[i];
+			}
+			i++;
+		}
+
+		function level5()
+		{
+			level=5;
+			document.getElementById("heading").innerHTML = "FINAL LEVEL! <br> Level " + level;
+			document.getElementById("answer").value = '';
+			document.getElementById("message").innerHTML = '';
+			document.getElementById("avgScore").innerHTML = '';
+			num1= Math.floor((Math.random() * 900) + 100);
+			num2= Math.floor((Math.random() * 900) + 100);
+			if(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        {
+	        	while(num2 == 0 || num2 > num1 || (num1%num2)!=0)
+	        	{	
+			        num1= Math.floor((Math.random() * 900) + 100);
+				    num2= Math.floor((Math.random() * 900) + 100);
+	        	}
+	        }
+			if (quotient[i] == null)
+	        {
+	        	quotient[i] = num1/num2;
+	        }
+			if(i == 75)
+			{
+				document.getElementById("heading").innerHTML = "Level " + level + " - LAST QUESTION";
+				if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+			    document.getElementById("question").innerHTML = question[i];
+			    cnt = 15;
+			}
+			else
+			{	
+				if (question[i] == null)
+	           	{
+	           		question[i] = i +". What is "+ num1+ " ÷ "+ num2+ "?<br>";
+	           	}
+				document.getElementById("question").innerHTML = question[i];
+			}
+			i++;
+		}
+
+		function confirmExit() {
+		   	if(confirm('Do you wish to continue?')) 
+           		return true; 
+      		else 
+           		return false;
+		}
+
+		function confirmReport() {
+		   	if(confirm('Would you like to view your report?')) 
+           		return true; 
+      		else 
+           		return false;
+		}
+
+		function report() {
+			var firstname="", lastname="", middlename="", dob="", age="", gender="";
+			firstname += sessionStorage.getItem('firstname');
+	 		lastname += sessionStorage.getItem('lastname');
+	 		middlename += sessionStorage.getItem('middlename');
+	 		dob += sessionStorage.getItem('dob');
+	 		age += sessionStorage.getItem('age');
+	 		gender += sessionStorage.getItem('gender');
+	 		document.getElementById("user").innerHTML = "<strong>Name:</strong> "+ firstname + " " + middlename + " " + lastname + "<br><strong>Date of Birth:</strong> " + dob + "<br><strong>Age:</strong> " + age + "<br><strong>Gender:</strong> " + gender;
+			report2();
+			document.getElementById("congrats").innerHTML += "<br>Questions you got incorrect: - <br><br>" + incorrect;
+			i = 1;
+			stage = 0;
+			correct = 0;
+			wrong = 0;
+			overall = 0;
+			document.getElementById("redo").innerHTML = "<button id= 'submit' onclick='getQuestion()'>Re-Do Quiz</button>"
+		}
+
+		function report2() {
+			var avg, status, total, x;
+			total = stage*TOTAL;
+			avg = overall/total*100;
+			if (avg>=80) 
+			{
+				status = "<span class='highlight'>Pass</span>";
+			}
+			else
+			{
+				status = "<span class='highlight2'>Fail</span>";
+			}
+			document.getElementById("answer").value = '';
+			document.getElementById("answer").disabled = true;
+			document.getElementById("submit").disabled = true;
+			document.getElementById("test").disabled = true;
+			document.getElementById("question").innerHTML = '';
+			document.getElementById("heading").innerHTML += "<br><br>REPORT";
+			document.getElementById("message").innerHTML = "Your overall score is " + overall + " out of " + total;
+			document.getElementById("avgScore").innerHTML = "Overall Average: " + avg.toFixed(2) + "% <br>" + "Staus: " + status;
+			for (x = 1; x <= stage; x++) {
+				document.getElementById("congrats").innerHTML += "LEVEL " + x + ": " + levelstatus[x] + "<br>";
+			}
+		}
+	</script>
+</body>
+</html>

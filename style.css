@@ -1,0 +1,335 @@
+body 
+{
+	background-color: #eaedef;
+}
+#page {
+	margin: 0 auto;
+	background-color: #eaedef;
+	width: 85%;
+}
+.home
+{
+	margin-left: 2%;
+	margin-right: 40%;	
+	background-color: #b768b0;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: white;
+	text-decoration: none;
+	padding: 5px;
+	font-size: 10px;
+	border-radius: 2px;
+}
+a.home:hover
+{
+	background-color: #a83e9e;
+}
+#title 
+{
+	padding-bottom: 10px;
+	color: white;
+	letter-spacing: 3px;
+	background-color: #48a8f2;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	margin-bottom: 1%;
+}
+#head
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	background-color: #48a8f2;
+	color: white;
+	text-align: center;
+}
+#test
+{
+	margin-top: 15px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: white;
+	background-color: #ffa411;
+	border: none;
+	text-align: center;
+	width: 75%;
+	height: 150px;
+	border-style: 5px;
+	padding: 15px;
+	font-size: 100px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+#test.blue
+{
+	background-color: #0e98f4;
+}
+#test.pink
+{
+	background-color: #f72785;
+}
+#test.green
+{
+	background-color: #03c44d;
+}
+#test:disabled
+{
+	cursor: not-allowed;
+	background-color: #d9d9db;
+}
+#test span
+{
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+#test span:after
+{
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+#test:hover span
+{
+	padding-right: 75px;
+}		
+#test:hover span:after
+{
+	opacity: 1;
+ 	right: 0;
+}
+#answer
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	letter-spacing: 2px;
+	padding-left: 30px;
+	font-size: 20px;
+	width: 300px;
+  	height: 60px;
+}
+.highlight
+{
+	color: #04d331;
+	font-weight: bold;
+}
+.highlight2
+{
+	color: #ef2300;
+	font-weight: bold;
+}
+#submit
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	padding: 5px 10px;
+	margin-left: 5px;
+	font-size: 25px;  			
+	text-align: center;
+  	cursor: pointer;
+  	outline: none;
+  	color: white;
+  	background-color: #04d331;
+  	border: none;
+  	border-radius: 5px;
+ 	box-shadow: 0 3px #999;
+}
+#submit:hover 
+{
+	background-color: #03b740
+}
+#submit:active 
+{
+  	background-color: #03b740;
+  	box-shadow: 0 3px #666;
+  	transform: translateY(4px);
+}
+#submit:disabled
+{
+	cursor: not-allowed;
+	background-color: #cccccc;
+}
+#heading
+{
+	text-align: center;
+	letter-spacing: 3px;
+	font-weight: bold;
+}
+#heading2
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	letter-spacing: 3px;
+	font-weight: bold;
+}		
+#question, #message, #avgScore
+{
+	text-align: justify;
+	letter-spacing: 3px;
+}
+#congrats
+{
+	text-align: justify;
+	letter-spacing: 3px;
+	font-weight: bold;
+}
+#user
+{
+	letter-spacing: 3px;
+	font-weight: normal;
+}
+.right
+{
+	background-color: white;
+	height: 100%;
+	width: 76%;
+	margin: 0 auto;
+	display: inline-block;
+}
+.left
+{
+	background-color: white;
+	padding-right: 2px;
+	padding-left: 8px;
+	margin: 0 auto;
+	width: 20%;
+	border-right: 5px solid #48a8f2;
+	display: inline-block;
+}
+#menu
+{
+	padding: 25px;
+	margin: 0 auto;
+	width: 30%;
+	display: inline-block;
+}
+#right
+{
+	width: 60%;
+	display: inline-block;
+}
+.parent
+{
+	margin: 0 auto;
+	background-color: white;
+	width: 95%;
+}
+#current {
+	padding: 15px;
+	font-size: 30px;
+}
+a
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: white;
+	text-decoration: none;
+	border-style: 5px;
+	padding: 10px;
+	font-size: 15px;
+	border-radius: 8px;
+}
+a:active
+{
+	box-shadow: 0 3px #666;
+	transform: translateY(4px);
+}
+a.orange
+{
+	background-color: #ffa411;
+	box-shadow: 0 5px #999;
+}
+a.orange:hover
+{
+	background-color: #ed8600;
+}
+a.blue
+{
+	background-color: #0e98f4;
+	box-shadow: 0 5px #999;
+}
+a.blue:hover
+{
+	background-color: #0385b5;
+}
+a.pink
+{
+	background-color: #f72785;
+	box-shadow: 0 5px #999;
+}
+a.pink:hover
+{
+	background-color: #d80460;
+}
+a.green
+{
+	background-color: #03c44d;
+	box-shadow: 0 5px #999;
+}
+a.green:hover
+{
+	background-color: #01a016;
+}
+.og
+{
+	color: #ffa411;
+}
+.bl
+{
+	color: #48a8f2;
+}
+.quiz
+{
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	padding: 10px;
+	position: relative;
+}
+#math1
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+i
+{
+	letter-spacing: 2px;
+	font-size: 20px;
+	font-weight: bold;
+}
+legend
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	letter-spacing: 3px;
+	font-size: 20px;
+	font-weight: bold;
+}
+form label
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 20px;
+	letter-spacing: 2px;
+}
+form #dob
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	letter-spacing: 2px;
+	font-size: 18px;
+	width: 200px;
+  	height: 25px;
+}
+form #firstname, #lastname, #middlename, #age, #gender
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	letter-spacing: 2px;
+	font-size: 18px;
+	width: 175px;
+  	height: 25px;
+}
+form #self {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	letter-spacing: 2px;
+	font-size: 18px;
+}
